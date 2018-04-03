@@ -1,4 +1,6 @@
 <?php
+    setcookie("name", "John Watkin", time()+3600, "/","", 0);
+
     # Constants
     define("MY_CONSTANT", "Hello world!");
     echo MY_CONSTANT; 
@@ -43,6 +45,15 @@
 
     strlen($name); # String length
     strpos($name, "Smith"); # Starting position of "Smith"
+
+    echo "<hr>";
+
+
+    # Cookies
+    if(isset($_COOKIE["name"]))
+        echo "Name: ".$_COOKIE["name"];
+    else
+        echo "Who are you?";
 
     echo "<hr>";
 

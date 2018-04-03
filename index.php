@@ -24,6 +24,11 @@
             $email = $_POST["email"];
             $password = $_POST["password"];
 
+            setcookie("username", $username, time()+3600, "/","", 0);
+
+
+
+            
             $pass_hash = password_hash($password, PASSWORD_DEFAULT);
             echo "Username: ".$username."<br>Email: ".$email."<br>Hash: ".$pass_hash;
             
