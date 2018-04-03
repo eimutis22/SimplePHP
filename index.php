@@ -5,6 +5,10 @@
     </head>
     <body>
 
+<?php 
+    include("include.php");
+?>
+
     <div id="wrap">
         <form action="index.php" method="POST">
             <input type="text" name="username" placeholder="Username"><br>
