@@ -6,7 +6,7 @@
     <body>
 
 <?php 
-    include("include.php");
+    require("include.php");
 ?>
 
     <div id="wrap">
