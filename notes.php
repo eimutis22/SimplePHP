@@ -1,5 +1,6 @@
 <?php
     setcookie("name", "John Watkin", time()+3600, "/","", 0);
+    session_start();
 
     # Constants
     define("MY_CONSTANT", "Hello world!");
@@ -56,6 +57,16 @@
         echo "Who are you?";
 
     echo "<hr>";
+
+
+
+    # Sessions   
+    if( isset( $_SESSION['counter'] ) ) {
+       $_SESSION['counter'] += 1;
+    }else {
+       $_SESSION['counter'] = 1;
+    }
+    echo "Session: ".$_SESSION['counter']."<br>";
 
 
     # Get Platform
