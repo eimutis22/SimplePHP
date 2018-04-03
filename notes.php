@@ -69,6 +69,7 @@
     echo "Session: ".$_SESSION['counter']."<br>";
 
 
+
     # Get Platform
     echo getBrowser();
     function getBrowser(){
@@ -84,4 +85,13 @@
         
         return $platform;
     }
+
+
+
+    # Error handling
+    # die("Not found."); 
+
+
+    
+
 ?>

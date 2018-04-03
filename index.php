@@ -27,10 +27,24 @@
             setcookie("username", $username, time()+3600, "/","", 0);
 
 
-
-            
             $pass_hash = password_hash($password, PASSWORD_DEFAULT);
             echo "Username: ".$username."<br>Email: ".$email."<br>Hash: ".$pass_hash;
+
+
+            echo "<hr>";
+
+            $servername = "localhost";
+            $username = "root";
+            $password = "root";
+
+            // Create connection
+            $conn = new mysqli($servername, $username, $password);
+
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            echo "Connected successfully";
             
         ?>
 
