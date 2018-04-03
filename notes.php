@@ -44,7 +44,22 @@
     strlen($name); # String length
     strpos($name, "Smith"); # Starting position of "Smith"
 
+    echo "<hr>";
 
-    
 
+    # Get Platform
+    echo getBrowser();
+    function getBrowser(){
+        $u_agent = $_SERVER['HTTP_USER_AGENT'];
+        $platform = "Unknown";
+        
+        if (preg_match('/linux/i', $u_agent)) 
+            $platform = 'Linux';
+        elseif (preg_match('/macintosh|mac os x/i', $u_agent)) 
+            $platform = 'Mac';
+        elseif (preg_match('/windows|win32/i', $u_agent))
+            $platform = 'Windows';
+        
+        return $platform;
+    }
 ?>
