@@ -44,11 +44,9 @@
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-            echo "<hr>Result: ".$result."<br>Row: ".$row;
-
-
             function InsertIntoDB($u, $e, $p){
-                if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+                if(isset($_REQUEST["username"])) {
                     // echo $username;
                     $db_servername = "localhost";
                     $db_username = "root";
@@ -72,7 +70,9 @@
                     
                     
                     $conn->close();
+                    unset($_POST['username']);
                 }
+
             }
 
         ?>
