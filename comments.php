@@ -1,19 +1,23 @@
-
-<form action="comments.php" method="GET">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<form action="comments.php" method="POST">
     <input type="text" name="comment" placeholder="Comment..">
     <input type="submit" value="Submit Comment">
 </form>
 
 
 <?php
-    if(isset($_GET["comment"])) {
+    session_start();
+    $db_servername = "localhost";
+    $db_username = "root";
+    $db_password = "root";
+    $db_dbname = "GuestDB";
 
-        $db_servername = "localhost";
-        $db_username = "root";
-        $db_password = "root";
-        $db_dbname = "GuestDB";
+    $conn = new mysqli($db_servername, $db_username, $db_password, $db_dbname);
 
-        $conn = new mysqli($db_servername, $db_username, $db_password, $db_dbname);
+    if($_REQUEST['comment'] != null) {
+
         // Check connection
         if ($conn->connect_error) 
             die("Connection failed: ".$conn->connect_error);
@@ -29,12 +33,25 @@
         else 
             echo "Error: " . $sql . "<br>" . $conn->error;
 
-
-        $conn->close();
-
-        unset($_GET['comment']);
-
+        // $conn->close();
+        unset($_REQUEST['comment']);
+        unset($_POST["turnOver"]);
     }
+
+
+    echo "<hr>";
+
+    $sql = "SELECT * FROM CommentTbl";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc())
+            echo "<div class='comment'>Comment: " . $row["Comment"]."</div>";
+    }
+    else
+        echo "0 results";
+
+    $conn->close();
 
 
 ?>
